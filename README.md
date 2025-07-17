@@ -22,8 +22,8 @@ Học phần **Trí Tuệ Nhân Tạo** là môn học giới thiệu về các 
 
 | STT    | Thuật toán      | Source Code|
 |--------|-----------------|------------|
-| 1      | Thuật toán BFS  |            |
-| 2      | Thuật toán DFS  |            |
+| 1      | Thuật toán BFS  | [BFS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_BFS)          |
+| 2      | Thuật toán DFS  | [DFS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_DFS)           |
 | 3      |   |            |
 
 > 📌 Lưu ý: Bài tập mang tính chất tham khảo.

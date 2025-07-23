@@ -44,5 +44,5 @@ def dfs(soDinh, adj, start, stop):
 
 
 if __name__=="__main__":
-    soDinh, adj = readMTK("VD1C2_DFS.txt")
+    soDinh, adj = readMTK("ThuatToan_DFS/VD1C2_DFS.txt")
     dfs(soDinh, adj, 0, 6) 

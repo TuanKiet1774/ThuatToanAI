@@ -44,6 +44,6 @@ def bfs(soDinh, adj, start, stop):
 
 
 if __name__=="__main__":
-    # soDinh, adj = readMTK("VD3C2_BFS.txt")
-    soDinh, adj = readMTK("VD_BFS.txt")
+    # soDinh, adj = readMTK("ThuatToan_BFS/VD3C2_BFS.txt")
+    soDinh, adj = readMTK("ThuatToan_BFS/VD_BFS.txt")
     bfs(soDinh, adj, 0, 7)

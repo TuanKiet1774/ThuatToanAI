@@ -24,6 +24,10 @@ Học phần **Trí Tuệ Nhân Tạo** là môn học giới thiệu về các 
 |--------|-----------------|------------|
 | 1      | Thuật toán BFS  | [BFS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_BFS)          |
 | 2      | Thuật toán DFS  | [DFS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_DFS)           |
-| 3      |   |            |
+| 3      | Thuật toán AT  | [AT](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_AT)           |
+| 4      | Thuật toán Best First Search| [Best First Search](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_BestFS)|
+| 5      | Thuật toán Leo Đồi | [Leo Đồi](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_LeoDoi)|
+| 6      | Thuật toán CMS | [CMS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_CMS)|
+| 7      | ... | ... |
 
 > 📌 Lưu ý: Bài tập mang tính chất tham khảo.

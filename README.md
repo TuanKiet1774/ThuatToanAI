@@ -31,3 +31,12 @@ Học phần **Trí Tuệ Nhân Tạo** là môn học giới thiệu về các 
 | 7      | ... | ... |
 
 > 📌 Lưu ý: Bài tập mang tính chất tham khảo.
+---
+## 📝Tổng hợp đề thi
+
+| STT    | Kỳ thi      | Đề |
+|--------|-----------------|------------|
+| 1      | Thi GK  | [Đề tổng hợp GK](https://github.com/TuanKiet1774/ThuatToanAI/blob/main/%C4%90%E1%BB%81%20Thi%20GK%20T%E1%BB%95ng%20H%E1%BB%A3p.pdf)          |
+| 2      | Thi CK  | ...|
+
+> 📌 Lưu ý: Đề thi mang tính chất minh họa và tham khảo.

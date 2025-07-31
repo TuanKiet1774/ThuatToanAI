@@ -29,7 +29,8 @@ Học phần **Trí Tuệ Nhân Tạo** là môn học giới thiệu về các 
 | 5      | Thuật toán Leo Đồi | [Leo Đồi](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_LeoDoi)|
 | 6      | Thuật toán CMS | [CMS](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_CMS)|
 | 7      | Thuật toán A Star  | [A Star](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_Astar)|
-| 8      | ... | ... |
+| 8      | Thuật toán nhánh cận| [Nhánh cận](https://github.com/TuanKiet1774/ThuatToanAI/tree/main/ThuatToan_NhanhCan)|
+| 9      | ... | ... |
 
 > 📌 Lưu ý: Bài tập mang tính chất tham khảo.
 ---

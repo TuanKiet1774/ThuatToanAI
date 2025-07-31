@@ -24,10 +24,10 @@ def tomau(sodinh, adj, bac):
     color = [-1] * sodinh 
     for i in range(sodinh):
         dinh.append(i)
-    print(f"Danh sach dinh: {dinh}")
+    print(f"Danh sách các đỉnh: {dinh}")
     #Sap xep giam danh sach giam dan theo bac
     dinh = sorted(dinh, key=lambda x: bac[x], reverse=True)
-    print(f"Danh sach dinh giam dan theo bac: {dinh}")
+    print(f"Danh sách đỉnh giảm dần theo bậc: {dinh}")
     while len(dinh) > 0:
         n = dinh.pop(0)
         print(f"n = {n}")
@@ -44,14 +44,17 @@ def tomau(sodinh, adj, bac):
             for j in Tn:
                if i != j and adj[i][j] == 1 :
                 Tn.remove(j)
-        print(f"Tn sau khi loai bo cac dinh ke nhau: {Tn}")
+        print(f"Tn sau khi loại bỏ các đỉnh kề: {Tn}")
                    
         for i in Tn:
             if i in dinh:
                 dinh.remove(i)
                 color[i] = mau
-        print(f"color = {color}")
-        print(f"dinh con lai chua to = {dinh}")    
+        print(f"Màu = {color}")
+        if(len(dinh) > 0):
+            print(f"Đỉnh còn lại chưa tô = {dinh}")
+        else:
+            print("Đã tô màu xong")    
         mau += 1   
 
 if __name__ == "__main__":

@@ -15,9 +15,6 @@ def readh(filename):
         print(h)
     return h
 
-from tracemalloc import start
-
-
 def mtk(filename):
     with open(filename, 'r') as f:
         sodinh = int(f.readline().strip())
@@ -39,7 +36,6 @@ def BranchAndBound(sodinh, adj, h, start, stop):
     OPEN = [start]
     CLOSE = []
     min = float('inf')
-    flag = False #chua tim thay duong di (n = dich gan flag = true)
     g = [float('inf')] * sodinh
     f = [float('inf')] * sodinh
     g[start] = 0
@@ -47,6 +43,7 @@ def BranchAndBound(sodinh, adj, h, start, stop):
     print(f"g = {g}")
     print(f"f = {f}")
     CHA = [-1] * sodinh
+    flag = False #Chưa tìm thấy đường đi (n = goal ==> flag = true)
 
     while len(OPEN) > 0:
         n = OPEN.pop(0)
@@ -61,65 +58,65 @@ def BranchAndBound(sodinh, adj, h, start, stop):
             else:
                 print(f"f[{n}] = {f[n]} > fmin = {min}")
         else:
-            if f[n] >= min: # Neu f[n] >= fmin
-                print(f"f[{n}] > fmin = {min} : Xen tia nhanh con")
-            else: # Neu f[n] < fmin
-                # Tim cac dinh ke
-                Tn = [] #reset Tn
+            if f[n] >= min: # Nếu f[n] >= fmin
+                print(f"f[{n}] > fmin = {min} : Xén tỉa nhánh con")
+            else: # Nếu f[n] < fmin
+                Tn = [] #Khởi tạo danh sách kề = rỗng
                 for i in range(sodinh):
-                    if adj[n][i] > 0: # Co duong di tu n den i
-                        #TH1: i khong thuoc open, khong thuoc close
-                        if i not in OPEN and i not in CLOSE:
+                    if adj[n][i] > 0: # Có đỉnh kề
+                        #TH1: i không thuộc OPEN và CLOSE
+                        # tính g, f, chèn vào Tn và ghi nhận CHA
+                        if i not in OPEN and i not in CLOSE: 
                             print(f"{i} NOT IN OPEN and NOT IN CLOSE")
                             g[i] = g[n] + adj[n][i]
                             f[i] = g[i] + h[i]
                             Tn.append(i)
-                            CHA[i] = n
-                        #TH2: i khong thuoc open, thuoc close
-                        elif i not in OPEN and i in CLOSE:   
-                            print(f"{i} NOT IN OPEN , IN CLOSE")
+                            CHA[i] = n 
+                        #TH2: i thuộc OPEN 
+                        elif i in OPEN and i not in CLOSE: 
+                            print(f"{i} IN OPEN and NOT IN CLOSE")
                             gnew = g[n] + adj[n][i]
                             fnew = gnew + h[i]
                             print(f"gnew[i] = {gnew}")
                             print(f"fnew[i] = {fnew}")
-                            # Neu fnew < f[i] thi cap nhat g[i], f[i],
+                            # Nếu fnew < f[i] thì cập nhật g[i], f[i], CHA, không chèn vào Tn
                             if fnew < f[i]:
-                                print(f"fnew = {fnew} <f[i] = f[{i}]: Cap nhat g[{i}] = {gnew}, f[{i}] = {fnew}, CHA")
+                                print(f"fnew = {fnew} <f[i] = f[{i}] ==> Cập nhật: g[{i}] = {gnew}, f[{i}] = {fnew}, CHA")
+                                g[i] = gnew
+                                f[i] = fnew
+                                CHA[i] = n 
+                                # Tn.append(i) # có trong OPEN rồi nên không chèn vào Tn 
+                        #TH3: i thuộc CLOSE
+                        elif i not in OPEN and i in CLOSE:   
+                            print(f"{i} NOT IN OPEN and IN CLOSE")
+                            gnew = g[n] + adj[n][i]
+                            fnew = gnew + h[i]
+                            print(f"gnew[i] = {gnew}")
+                            print(f"fnew[i] = {fnew}")
+                            # Nếu fnew < f[i] thì cập nhật g[i], f[i], CHA, chèn vào Tn
+                            if fnew < f[i]:
+                                print(f"fnew = {fnew} <f[i] = f[{i}] ==> Cập nhật: g[{i}] = {gnew}, f[{i}] = {fnew}, CHA")
                                 g[i] = gnew
                                 f[i] = fnew
                                 CHA[i] = n 
                                 Tn.append(i)
-                        #TH3: i thuoc open, khong thuoc close
-                        elif i in OPEN and i not in CLOSE: 
-                            print(f"{i} IN OPEN ,NOT IN CLOSE")
-                            gnew = g[n] + adj[n][i]
-                            fnew = gnew + h[i]
-                            print(f"gnew[i] = {gnew}")
-                            print(f"fnew[i] = {fnew}")
-                            # Neu fnew < f[i] thi cap nhat g[i], f[i],
-                            if fnew < f[i]:
-                                print(f"fnew = {fnew} <f[i] = f[{i}]: Cap nhat g[{i}] = {gnew}, f[{i}] = {fnew}, CHA")
-                                g[i] = gnew
-                                f[i] = fnew
-                                CHA[i] = n 
-                                # Tn.append(i) ko chen vao Tn == ko chen vao open
-                        #TH4: i thuoc open, thuoc close
+                        #TH4: i thuộc OPEN và CLOSE
                         elif i in OPEN and i in CLOSE:   
                             print(f"{i} IN OPEN and IN CLOSE") 
                             gnew = g[n] + adj[n][i]
                             fnew = gnew + h[i]
                             print(f"gnew[i] = {gnew}")
                             print(f"fnew[i] = {fnew}")
-                            # Neu fnew < f[i] thi cap nhat g[i], f[i],
+                            # Nếu fnew < f[i] thì cập nhật g[i], f[i], CHA, không chèn vào Tn
                             if fnew < f[i]:
                                 print(f"fnew = {fnew} <f[i] = f[{i}]: Cap nhat g[{i}] = {gnew}, f[{i}] = {fnew}, CHA")
                                 g[i] = gnew
                                 f[i] = fnew
                                 CHA[i] = n 
                                 
-                print(f"Tn = {Tn}")
-                Tn = sorted(Tn, key=lambda x: f[x])                        
-                OPEN = Tn + OPEN 
+                Tn = sorted(Tn, key=lambda x: f[x]) #Sắp xếp Tn theo f 
+                print(f"Tn đẵ sắp xếp: {Tn}")             
+                OPEN = Tn + OPEN # Chèn Tn vào đầu OPEN
                 print(f"OPEN = {OPEN}")
                 print(f"g = {g}")
                 print(f"f = {f}")
@@ -132,11 +129,14 @@ def BranchAndBound(sodinh, adj, h, start, stop):
     
     i = stop
     while i != -1:
-        print(chr(i+65), end="<-")
-        # print(i, end="<-")
+        # print(chr(i+65), end="<-")
+        print(i, end="<-")
         i = CHA[i]
     
 if __name__ == "__main__":
+    # sodinh, adj = mtk("ThuatToan_NhanhCan/BT_NhanhCan.txt")
+    # h = readh("ThuatToan_NhanhCan/HeBT_NhanhCan.txt")
+    # BranchAndBound(sodinh, adj, h, 0, 7)
     sodinh, adj = mtk("ThuatToan_NhanhCan/VD_NhanhCan.txt")
-    h = readh("ThuatToan_NhanhCan/He_NhanhCan.txt")
-    BranchAndBound(sodinh, adj, h, 0, 7)
+    h = readh("ThuatToan_NhanhCan/HeVD_NhanhCan.txt")
+    BranchAndBound(sodinh, adj, h, 0, 1)
